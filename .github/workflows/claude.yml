@@ -38,7 +38,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
           # ✅ FIX: explicitly set a valid model
-          model: claude-sonnet-3-5-sonnet-latest
+          model: claude-sonnet-4-6
 
           # Optional but recommended stability settings
           permission_mode: default
