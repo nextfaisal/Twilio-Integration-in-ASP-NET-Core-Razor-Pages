@@ -1,0 +1,47 @@
+@page
+@model WhatsAppModel
+@{
+    ViewData["Title"] = "Send WhatsApp Message";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <h1 class="mb-3">Send WhatsApp Message</h1>
+
+        @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+        {
+            <div class="alert alert-success" role="alert">
+                @Model.StatusMessage
+            </div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @Model.ErrorMessage
+            </div>
+        }
+
+        <form method="post" class="border rounded p-4 bg-light">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="ToNumber" class="form-label"></label>
+                <input asp-for="ToNumber" class="form-control" placeholder="+15551234567" />
+                <span asp-validation-for="ToNumber" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Message" class="form-label"></label>
+                <textarea asp-for="Message" class="form-control" rows="5" placeholder="Type your WhatsApp message"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send WhatsApp Message</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
